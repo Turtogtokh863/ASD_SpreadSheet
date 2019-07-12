@@ -1,5 +1,9 @@
-package spreadsheet;
+package spreadsheet.content;
 
+
+import spreadsheet.service.Expression;
+import spreadsheet.sheet.Reference;
+import spreadsheet.operator.Addition;
 
 public abstract class Content {
     private String content;

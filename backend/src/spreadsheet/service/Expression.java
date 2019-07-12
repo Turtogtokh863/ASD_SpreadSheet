@@ -1,4 +1,6 @@
-package spreadsheet;
+package spreadsheet.service;
+
+import spreadsheet.operator.Operator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,8 @@ public class Expression {
     }
     public double evaluate(){
         double result = groups.get(0);
-        for (int i = 0; i < groups.size(); i++) {
+        for (int i = 1; i < groups.size(); i++) {
+
             result = operator.apply(result,groups.get(i));
         }
         return result;

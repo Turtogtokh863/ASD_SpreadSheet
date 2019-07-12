@@ -1,5 +1,8 @@
 package spreadsheet;
 
+import spreadsheet.sheet.Reference;
+import spreadsheet.sheet.Spreadsheet;
+
 public class Director {
     private Spreadsheet spreadsheet;
     public Director(Spreadsheet spreadsheet){

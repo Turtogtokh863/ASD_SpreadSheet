@@ -1,4 +1,4 @@
-package spreadsheet;
+package spreadsheet.content;
 
 public  class TextContent extends Content {
     private String value;

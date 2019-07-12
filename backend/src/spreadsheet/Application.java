@@ -1,5 +1,7 @@
 package spreadsheet;
 
+import spreadsheet.sheet.Spreadsheet;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -10,6 +12,6 @@ public class Application {
         director.describe();
         director.examine();
 
-        System.out.println(sp.getCellFromString("[1,2]").getContentValue());
+        System.out.println(sp.getCellValueFromString("[1,2]"));
     }
 }

@@ -1,24 +1,29 @@
-package spreadsheet;
+package spreadsheet.sheet;
+
+import spreadsheet.content.Content;
 
 public class Cell {
     private int row;
     private int col;
+    private Spreadsheet spreadsheet;
 
     private String formula;
     private Content content;
     public Cell(){
 
     }
-    public Cell(int row, int col, Content content) {
+    public Cell(Spreadsheet spreadsheet,int row, int col, Content content) {
         this.row = row;
         this.col = col;
         this.content = content;
+        this.spreadsheet = spreadsheet;
     }
-    public Cell(int row, int col, Content content,String formula) {
+    public Cell(Spreadsheet spreadsheet,int row, int col, Content content,String formula) {
         this.row = row;
         this.col = col;
         this.content = content;
         this.formula= formula;
+        this.spreadsheet = spreadsheet;
     }
     public int getRow() {
         return row;
@@ -79,5 +84,13 @@ public class Cell {
 
     public void setFormula(String formula) {
         this.formula = formula;
+    }
+
+    public Spreadsheet getSpreadsheet() {
+        return spreadsheet;
+    }
+
+    public void setSpreadsheet(Spreadsheet spreadsheet) {
+        this.spreadsheet = spreadsheet;
     }
 }

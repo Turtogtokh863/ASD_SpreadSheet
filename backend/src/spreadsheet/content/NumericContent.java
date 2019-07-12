@@ -1,4 +1,4 @@
-package spreadsheet;
+package spreadsheet.content;
 
 public  class NumericContent extends Content {
     private double value;

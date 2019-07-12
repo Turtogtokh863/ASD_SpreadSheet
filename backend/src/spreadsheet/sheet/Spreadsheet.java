@@ -1,4 +1,7 @@
-package spreadsheet;
+package spreadsheet.sheet;
+
+import spreadsheet.content.NumericContent;
+import spreadsheet.content.TextContent;
 
 public class Spreadsheet {
     private int rowsize = 10;
@@ -21,13 +24,13 @@ public class Spreadsheet {
     }
 
     public void addCell(int row, int col , String val){
-        cells[row][col] = new Cell(row,col,new TextContent(val));
+        cells[row][col] = new Cell(this,row,col,new TextContent(val));
     }
     public void addCell(int row, int col , String val,String formula){
-        cells[row][col] = new Cell(row,col,new TextContent(val),formula);
+        cells[row][col] = new Cell(this,row,col,new TextContent(val),formula);
     }
     public void addCell(int row, int col , double val){
-        cells[row][col] = new Cell(row,col, new NumericContent(val));
+        cells[row][col] = new Cell(this, row,col, new NumericContent(val));
     }
     public String getCellValue(int row, int col){
         return cells[row][col].getContentValue();
@@ -41,7 +44,9 @@ public class Spreadsheet {
         int col = Integer.parseInt(vals[1]);
         return cells[row][col];
     }
-
+    public String getCellValueFromString(String coordinats){
+        return getCellFromString(coordinats).getContentValue();
+    }
 
     public void describe() {
         for (int i = 0; i < rowsize; i++) {
