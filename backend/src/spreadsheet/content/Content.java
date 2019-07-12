@@ -19,13 +19,9 @@ public abstract class Content {
         this.content = content;
     }
 
-    public void   createExpression(String formula){
-
+    public Expression   createExpression(String formula){
         expression = new Expression(new Addition());
-        String[] values = formula.split("\\+"); // TODO extra operator
-        for (int i = 0; i <values.length ; i++) {
-            expression.append(Double.valueOf(values[i]));
-        }
+        return expression;
     }
 
     public abstract String  getContentValue();

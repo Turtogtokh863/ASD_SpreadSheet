@@ -50,7 +50,8 @@ public class Director {
         buildNumericCell(8,2,0.15);
 
         buildTextCell(9,1,"Total :");
-        buildFormulaCell(9,2,"485.7+118+295.85");
+        // add formula
+        buildFormulaCell(9,2,"[1,2]+[2,2]+[3,2]+[4,2]+[5,2]+200");
 
         buildTextCell(10,1,"Partners :");
         buildNumericCell(10,2,4);

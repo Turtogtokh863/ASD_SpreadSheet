@@ -47,7 +47,9 @@ public class Spreadsheet {
     public String getCellValueFromString(String coordinats){
         return getCellFromString(coordinats).getContentValue();
     }
-
+    public Double getCellValueFromDouble(String coordinats){
+        return Double.valueOf(getCellFromString(coordinats).getContentValue());
+    }
     public void describe() {
         for (int i = 0; i < rowsize; i++) {
             for (int j = 0; j < colsize; j++) {

@@ -1,6 +1,7 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
+import spreadsheet.service.Expression;
 
 public class Cell {
     private int row;
@@ -50,7 +51,16 @@ public class Cell {
     }
 
     public double calculateFormula(){
-        content.createExpression(this.formula);
+        Expression expression = content.createExpression(this.formula);
+        String[] values = formula.split("\\+"); // TODO extra operator
+        for (int i = 0; i <values.length ; i++) {
+            if(values[i].contains("[")){
+                expression.append(spreadsheet.getCellValueFromDouble(values[i]));
+            }else{
+                expression.append(Double.valueOf(values[i]));
+            }
+
+        }
         return content.calculateFormula();
     }
 
