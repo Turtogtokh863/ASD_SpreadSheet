@@ -1,4 +1,5 @@
 package spreadsheet;
 
-public class Operator {
+public abstract class Operator {
+    public abstract double apply(double right, double left);
 }

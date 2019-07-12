@@ -6,22 +6,29 @@ public abstract class Content {
     private String formulaString;
     private double calculation;
     private Reference reference;
+    private Expression expression;
     public Content(){
 
     }
 
-    public Content(String content, String formulaString) {
+    public Content(String content) {
         this.content = content;
-        this.formulaString = formulaString;
     }
 
-    public abstract String  getValue();
+    public void   createExpression(String formula){
 
-    public void   createExpression(){
-
+        expression = new Expression(new Addition());
+        String[] values = formula.split("\\+"); // TODO extra operator
+        for (int i = 0; i <values.length ; i++) {
+            expression.append(Double.valueOf(values[i]));
+        }
     }
-    public void   calculateFormula(){
 
+    public abstract String  getContentValue();
+
+    public double   calculateFormula(){
+        calculation = expression.evaluate();
+        return this.calculation;
     }
 
     public String getContent() {

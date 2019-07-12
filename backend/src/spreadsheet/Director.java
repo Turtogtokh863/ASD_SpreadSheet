@@ -12,8 +12,12 @@ public class Director {
     public void buildNumericCell(int row, int col, double val){
         spreadsheet.addCell(row,col,val);
     }
+
+    public void buildFormulaCell(int row, int col, String val){
+        spreadsheet.addCell(row,col,"",val);
+    }
     public void buildSample(){
-        buildTextCell(1,1,"Airfare");
+        buildTextCell(1,1,"Airfare :");
         buildNumericCell(1,2,485.7);
         buildTextCell(1,3,"");
         buildTextCell(1,4,"What we pay to the airline");
@@ -43,7 +47,7 @@ public class Director {
         buildNumericCell(8,2,0.15);
 
         buildTextCell(9,1,"Total :");
-
+        buildFormulaCell(9,2,"485.7+118+295.85");
 
         buildTextCell(10,1,"Partners :");
         buildNumericCell(10,2,4);
@@ -51,8 +55,8 @@ public class Director {
         buildTextCell(11,1,"Months :");
         buildNumericCell(11,2,12);
     }
-    public void displaySheet(){
-        spreadsheet.displaySheet();
+    public void describe(){
+        spreadsheet.describe();
     }
     public void examine(){
         spreadsheet.examine();

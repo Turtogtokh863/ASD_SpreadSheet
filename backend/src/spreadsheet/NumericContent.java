@@ -1,13 +1,13 @@
 package spreadsheet;
 
-public  class NumbericContent extends Content {
+public  class NumericContent extends Content {
     private double value;
-    public NumbericContent(double value){
+    public NumericContent(double value){
         this.value = value;
     }
 
     @Override
-    public  String  getValue(){
+    public  String  getContentValue(){
         return String.valueOf(value);
     }
 }
