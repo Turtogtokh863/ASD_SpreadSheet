@@ -62,4 +62,8 @@ public abstract class Content {
     public void setReference(Reference reference) {
         this.reference = reference;
     }
+
+    public void setExpression(Expression expression){
+        this.expression = expression;
+    }
 }
