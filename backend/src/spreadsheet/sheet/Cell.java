@@ -54,7 +54,7 @@ public class Cell {
         Expression expression = content.createExpression(this.formula);
         String[] values = formula.split("\\+"); // TODO extra operator
         for (int i = 0; i <values.length ; i++) {
-            if(values[i].contains("[")){
+            if(isReference(values[i])){
                 expression.append(spreadsheet.getCellValueFromDouble(values[i]));
             }else{
                 expression.append(Double.valueOf(values[i]));
@@ -62,6 +62,10 @@ public class Cell {
 
         }
         return content.calculateFormula();
+    }
+
+    public boolean isReference(String val){
+        return val.contains("[");
     }
 
     public void setContent(Content content) {
