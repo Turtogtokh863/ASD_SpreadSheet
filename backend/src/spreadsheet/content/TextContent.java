@@ -9,9 +9,6 @@ public  class TextContent extends Content {
 
     @Override
     public  String  getContentValue(){
-        if(getReference()!=null){
-            return getReference().getCell().getContentValue();
-        }else
             return value;
     }
 }

@@ -5,15 +5,15 @@ import spreadsheet.operator.Operator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Expression {
+public class NumericExpression {
     private double leftValue;
     private double rightValue;
-    private Expression rightOperand;
-    private Expression leftOperand;
+    private NumericExpression rightOperand;
+    private NumericExpression leftOperand;
     private List<Double> groups;
     private Operator operator;
 
-    public Expression(Operator operator){
+    public NumericExpression(Operator operator){
         groups = new ArrayList<>();
         this.operator =operator;
     }
