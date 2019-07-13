@@ -89,6 +89,8 @@ public class Director {
         division.append(new Reference(spreadsheet.getCell(10,2)));
         division.append(new Reference(spreadsheet.getCell(11,2)));
         spreadsheet.getCell(12,2).setContent(division);
+        buildTextCell(13,1,"Expression :");
+        buildExperssionCell(13,2,"[1,2]+[2,2]+[3,2]+[4,2]+[5,2]+200");
     }
     public void describe(){
         spreadsheet.describe();
