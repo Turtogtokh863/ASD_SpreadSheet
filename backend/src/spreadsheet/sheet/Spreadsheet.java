@@ -1,5 +1,6 @@
 package spreadsheet.sheet;
 
+import spreadsheet.content.ExperssionContent;
 import spreadsheet.content.NumericContent;
 import spreadsheet.content.Reference;
 import spreadsheet.content.TextContent;
@@ -29,6 +30,10 @@ public class Spreadsheet {
     }
     public void addCellReference(int row, int col, Cell val){
         cells[row][col] = new Cell(this,row,col,new Reference(val));
+    }
+    public void addCellExpression(int row, int col, String expression){
+        cells[row][col] = new Cell(this,row,col,new ExperssionContent(expression));
+        cells[row][col].setFormula(expression);
     }
     public void addCell(int row, int col , String val,String formula){
         cells[row][col] = new Cell(this,row,col,new TextContent(val),formula);

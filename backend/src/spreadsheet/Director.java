@@ -20,8 +20,8 @@ public class Director {
         spreadsheet.addCell(row,col,val);
     }
 
-    public void buildFormulaCell(int row, int col, String val){
-        spreadsheet.addCell(row,col,"",val);
+    public void buildExperssionCell(int row, int col, String expression){
+        spreadsheet.addCellExpression(row,col,expression);
     }
     public void buildSample(){
         buildTextCell(1,1,"Airfare :");
@@ -54,7 +54,7 @@ public class Director {
 
         buildTextCell(9,1,"Total :");
         // add formula
-        buildFormulaCell(9,2,"[1,2]+[2,2]+[3,2]+[4,2]+[5,2]+200");
+        buildExperssionCell(9,2,"[1,2]+[2,2]+[3,2]+[4,2]+[5,2]+200");
 
         buildTextCell(10,1,"Partners :");
         buildNumericCell(10,2,4);
