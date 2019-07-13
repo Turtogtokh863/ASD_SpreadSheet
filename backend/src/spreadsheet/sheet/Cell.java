@@ -1,7 +1,7 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
-import spreadsheet.service.Expression;
+import spreadsheet.service.NumericExpression;
 
 public class Cell {
     private int row;
@@ -10,6 +10,7 @@ public class Cell {
 
     private String formula;
     private Content content;
+    private double calculation;
     public Cell(){
 
     }
@@ -45,19 +46,23 @@ public class Cell {
     public String getContentValue() {
         return content.getContentValue();
     }
+    public String getContentData(){
+        return content.getData();
+    }
+
 
     public boolean isFormulaContainsRef(){
         return getFormula().contains("[");
     }
 
     public double calculateFormula(){
-        Expression expression = content.createExpression(this.formula);
+        NumericExpression numericExpression = content.createExpression(this.formula);
         String[] values = formula.split("\\+"); // TODO extra operator
         for (int i = 0; i <values.length ; i++) {
             if(values[i].contains("[")){
-                expression.append(spreadsheet.getCellValueFromDouble(values[i]));
+                numericExpression.append(spreadsheet.getCellValueFromDouble(values[i]));
             }else{
-                expression.append(Double.valueOf(values[i]));
+                numericExpression.append(Double.valueOf(values[i]));
             }
 
         }
@@ -68,7 +73,13 @@ public class Cell {
         this.content = content;
     }
 
+    public double getCalculation() {
+        return content.getCalculation();
+    }
 
+    public void setCalculation(double calculation) {
+        this.calculation = calculation;
+    }
 
     public Content getContent(){
         return content;
@@ -79,13 +90,11 @@ public class Cell {
     }
     @Override
     public String toString() {
-        if(content.getReference()!=null){
-            return getCoordinates()+ " = " +getContent().getReference();
-        }
         if(getFormula()!=null){
             return getCoordinates()+ " = " +getFormula();
         }
-        return  getCoordinates()+ " = " +getContentValue();
+
+        return  getCoordinates()+ " = " +getContentData();
     }
 
     public String getFormula() {

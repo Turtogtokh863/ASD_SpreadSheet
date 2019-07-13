@@ -1,42 +1,51 @@
 package spreadsheet.content;
 
 
-import spreadsheet.service.Expression;
-import spreadsheet.sheet.Reference;
+import spreadsheet.service.NumericExpression;
 import spreadsheet.operator.Addition;
 
 public abstract class Content {
-    private String content;
+    private String data;
+    private String value;
     private String formulaString;
-    private double calculation;
-    private Reference reference;
-    private Expression expression;
+    protected double calculation;
+    private NumericExpression numericExpression;
     public Content(){
 
     }
 
-    public Content(String content) {
-        this.content = content;
+    public Content(String data) {
+        this.data = data;
     }
 
-    public Expression   createExpression(String formula){
-        expression = new Expression(new Addition());
-        return expression;
+    public NumericExpression createExpression(String formula){
+        numericExpression = new NumericExpression(new Addition());
+        return numericExpression;
     }
 
     public abstract String  getContentValue();
 
     public double   calculateFormula(){
-        calculation = expression.evaluate();
+        calculation = numericExpression.evaluate();
         return this.calculation;
     }
 
-    public String getContent() {
-        return content;
+    public String getData() {
+        return data;
+    }
+    public void appendToData(String append) {
+         this.data+=append;
+    }
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public String getFormulaString() {
@@ -55,15 +64,11 @@ public abstract class Content {
         this.calculation = calculation;
     }
 
-    public Reference getReference() {
-        return reference;
+    public void setNumericExpression(NumericExpression numericExpression){
+        this.numericExpression = numericExpression;
     }
 
-    public void setReference(Reference reference) {
-        this.reference = reference;
-    }
-
-    public void setExpression(Expression expression){
-        this.expression = expression;
+    public NumericExpression getNumericExpression() {
+        return numericExpression;
     }
 }

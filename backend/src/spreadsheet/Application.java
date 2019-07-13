@@ -11,7 +11,5 @@ public class Application {
         director.buildSample();
         director.describe();
         director.examine();
-
-        System.out.println(sp.getCellValueFromString("[1,2]"));
     }
 }
