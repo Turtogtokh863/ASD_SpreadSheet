@@ -1,4 +1,4 @@
-package spreadsheet;
+package spreadsheet.sheet;
 
 public  class Reference {
     private Cell cell;
