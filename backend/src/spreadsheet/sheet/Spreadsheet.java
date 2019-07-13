@@ -1,6 +1,7 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.NumericContent;
+import spreadsheet.content.Reference;
 import spreadsheet.content.TextContent;
 
 public class Spreadsheet {
@@ -25,6 +26,9 @@ public class Spreadsheet {
 
     public void addCell(int row, int col , String val){
         cells[row][col] = new Cell(this,row,col,new TextContent(val));
+    }
+    public void addCellReference(int row, int col, Cell val){
+        cells[row][col] = new Cell(this,row,col,new Reference(val));
     }
     public void addCell(int row, int col , String val,String formula){
         cells[row][col] = new Cell(this,row,col,new TextContent(val),formula);

@@ -1,6 +1,7 @@
 package spreadsheet;
 
-import spreadsheet.sheet.Reference;
+import spreadsheet.content.Reference;
+import spreadsheet.sheet.Cell;
 import spreadsheet.sheet.Spreadsheet;
 
 public class Director {
@@ -11,6 +12,9 @@ public class Director {
 
     public void buildTextCell(int row, int col, String val){
         spreadsheet.addCell(row,col,val);
+    }
+    public void buildReferenceCell(int row, int col, Cell val){
+        spreadsheet.addCellReference(row,col,val);
     }
     public void buildNumericCell(int row, int col, double val){
         spreadsheet.addCell(row,col,val);
@@ -40,9 +44,8 @@ public class Director {
         buildTextCell(5,4,"All our meals");
 
         buildTextCell(7,1,"Sub-total :");
-        Reference ref = new Reference(spreadsheet.getCell(1,2));
-        buildTextCell(7,2,"");
-        spreadsheet.getCell(7,2).getContent().setReference(ref);
+        buildReferenceCell(7,2,spreadsheet.getCell(1,2));
+
         buildTextCell(7,3,"");
         buildTextCell(7,4,"This is just reference to [1,2]");
 
