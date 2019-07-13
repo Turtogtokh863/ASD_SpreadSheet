@@ -8,7 +8,7 @@ public abstract class Content {
     private String data;
     private String value;
     private String formulaString;
-    private double calculation;
+    protected double calculation;
     private NumericExpression numericExpression;
     public Content(){
 
@@ -33,7 +33,9 @@ public abstract class Content {
     public String getData() {
         return data;
     }
-
+    public void appendToData(String append) {
+         this.data+=append;
+    }
     public void setData(String data) {
         this.data = data;
     }

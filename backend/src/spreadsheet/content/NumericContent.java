@@ -5,6 +5,8 @@ public  class NumericContent extends Content {
     public NumericContent(double value){
         super(String.valueOf(value));
         this.number = value;
+        this.calculation = value;
+
     }
 
     @Override

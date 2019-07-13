@@ -10,6 +10,7 @@ public class Cell {
 
     private String formula;
     private Content content;
+    private double calculation;
     public Cell(){
 
     }
@@ -72,7 +73,13 @@ public class Cell {
         this.content = content;
     }
 
+    public double getCalculation() {
+        return content.getCalculation();
+    }
 
+    public void setCalculation(double calculation) {
+        this.calculation = calculation;
+    }
 
     public Content getContent(){
         return content;

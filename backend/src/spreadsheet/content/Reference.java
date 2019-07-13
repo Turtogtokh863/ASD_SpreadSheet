@@ -24,4 +24,9 @@ public  class Reference extends Content {
         return getCell().getContentValue();
     }
 
+    @Override
+    public double getCalculation(){
+        return getCell().getCalculation();
+    }
+
 }
