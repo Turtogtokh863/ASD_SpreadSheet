@@ -16,6 +16,11 @@ public class Cell {
     public Cell(){
 
     }
+    public Cell(Spreadsheet spreadsheet, int row, int col){
+        this.spreadsheet = spreadsheet;
+        this.row = row;
+        this.col = col;
+    }
     public Cell(Spreadsheet spreadsheet,int row, int col, Content content) {
         this.row = row;
         this.col = col;

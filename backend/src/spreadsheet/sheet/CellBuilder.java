@@ -1,6 +1,9 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
+import spreadsheet.content.ExperssionContent;
+import spreadsheet.content.NumericContent;
+import spreadsheet.content.TextContent;
 
 import java.security.SecurityPermission;
 
@@ -13,8 +16,19 @@ public class CellBuilder {
     private Content content;
     private double calculation;
 
-    public  CellBuilder(Content content){
-        this.content = content;
+    public  CellBuilder(){
+    }
+
+    public CellBuilder setContent(String value){
+        if(value.matches("\\d+")){
+            content = new NumericContent(Double.valueOf(value));
+
+        }else if(value.matches("^[a-zA-Z]*$")){
+            content = new TextContent(value);
+        } else if(value.matches("\\d+[\\-\\+\\*\\/]+\\d")){
+            content = new ExperssionContent(value);
+        }
+        return this;
     }
 
     public CellBuilder setCell(int row, int col){
@@ -38,7 +52,10 @@ public class CellBuilder {
     }
 
     public Cell build(){
-        return new Cell(spreadsheet,row,col,content,expression);
+        Cell buildCell = new Cell(spreadsheet,row,col,content,expression);
+        spreadsheet.addCell(buildCell);
+        return buildCell;
+
     }
 
 

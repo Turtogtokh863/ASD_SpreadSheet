@@ -24,6 +24,9 @@ public class Spreadsheet {
     public void setCells(Cell[][] cells) {
         this.cells = cells;
     }
+    public void addCell(Cell cll){
+        cells[cll.getRow()][cll.getCol()] = cll;
+    }
 
     public void addCell(int row, int col , String val){
         cells[row][col] = new Cell(this,row,col,new TextContent(val));
