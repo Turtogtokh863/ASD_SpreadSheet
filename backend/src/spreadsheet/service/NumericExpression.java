@@ -7,8 +7,6 @@ import spreadsheet.operator.Subtraction;
 import spreadsheet.sheet.Spreadsheet;
 
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class NumericExpression {
     private Stack<Character> operators;
@@ -93,15 +91,5 @@ public class NumericExpression {
             case '/' : return (new Division()).apply(right,left);
         }
         return 0;
-    }
-    public static void main(String[] args) {
-        Pattern pat = Pattern.compile("\\d,\\d");
-
-        Matcher mat = pat.matcher("[1,2]sada[2,3]asda[4,5]");
-
-        while (mat.find())
-            System.out.println("Match: " + mat.group());
-
-
     }
 }
