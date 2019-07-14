@@ -1,14 +1,11 @@
 package spreadsheet.content;
 
 
-import spreadsheet.service.NumericExpression;
-
 public abstract class Content {
     private String data;
     private String value;
     private String formulaString;
     protected double calculation;
-    private NumericExpression numericExpression;
     public Content(){
 
     }
@@ -51,11 +48,4 @@ public abstract class Content {
         this.calculation = calculation;
     }
 
-    public void setNumericExpression(NumericExpression numericExpression){
-        this.numericExpression = numericExpression;
-    }
-
-    public NumericExpression getNumericExpression() {
-        return numericExpression;
-    }
 }
