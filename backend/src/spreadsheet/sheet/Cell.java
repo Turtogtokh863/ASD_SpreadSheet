@@ -8,9 +8,10 @@ public class Cell {
     private int col;
     private Spreadsheet spreadsheet;
 
-    private String formula;
+    private String expression;
     private Content content;
     private double calculation;
+
     public Cell(){
 
     }
@@ -20,11 +21,11 @@ public class Cell {
         this.content = content;
         this.spreadsheet = spreadsheet;
     }
-    public Cell(Spreadsheet spreadsheet,int row, int col, Content content,String formula) {
+    public Cell(Spreadsheet spreadsheet,int row, int col, Content content,String expression) {
         this.row = row;
         this.col = col;
         this.content = content;
-        this.formula= formula;
+        this.expression = expression;
         this.spreadsheet = spreadsheet;
     }
     public int getRow() {
@@ -52,12 +53,12 @@ public class Cell {
 
 
     public boolean isFormulaContainsRef(){
-        return getFormula().contains("[");
+        return getExpression().contains("[");
     }
 
     public double calculateFormula(){
-        NumericExpression numericExpression = content.createExpression(this.formula);
-        String[] values = formula.split("\\+"); // TODO extra operator
+        NumericExpression numericExpression = content.createExpression(this.expression);
+        String[] values = expression.split("\\+"); // TODO extra operator
         for (int i = 0; i <values.length ; i++) {
             if(values[i].contains("[")){
                 numericExpression.append(spreadsheet.getCellValueFromDouble(values[i]));
@@ -90,19 +91,19 @@ public class Cell {
     }
     @Override
     public String toString() {
-        if(getFormula()!=null){
-            return getCoordinates()+ " = " +getFormula();
+        if(getExpression()!=null){
+            return getCoordinates()+ " = " + getExpression();
         }
 
         return  getCoordinates()+ " = " +getContentData();
     }
 
-    public String getFormula() {
-        return formula;
+    public String getExpression() {
+        return expression;
     }
 
-    public void setFormula(String formula) {
-        this.formula = formula;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
     public Spreadsheet getSpreadsheet() {

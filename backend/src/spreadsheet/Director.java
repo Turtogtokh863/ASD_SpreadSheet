@@ -1,11 +1,13 @@
 package spreadsheet;
 
+import spreadsheet.content.Content;
 import spreadsheet.content.Reference;
 import spreadsheet.operator.Addition;
 import spreadsheet.operator.Division;
 import spreadsheet.operator.Multiplication;
 import spreadsheet.operator.Subtraction;
 import spreadsheet.sheet.Cell;
+import spreadsheet.sheet.CellBuilder;
 import spreadsheet.sheet.Spreadsheet;
 
 public class Director {
@@ -91,6 +93,7 @@ public class Director {
         spreadsheet.getCell(12,2).setContent(division);
         buildTextCell(13,1,"Expression :");
         buildExperssionCell(13,2,"[1,2]+[2,2]+[3,2]+[4,2]+[5,2]+200");
+
     }
     public void describe(){
         spreadsheet.describe();
