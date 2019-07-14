@@ -24,6 +24,9 @@ public class Spreadsheet {
     public void setCells(Cell[][] cells) {
         this.cells = cells;
     }
+    public void addCell(Cell cll){
+        cells[cll.getRow()][cll.getCol()] = cll;
+    }
 
     public void addCell(int row, int col , String val){
         cells[row][col] = new Cell(this,row,col,new TextContent(val));
@@ -33,7 +36,7 @@ public class Spreadsheet {
     }
     public void addCellExpression(int row, int col, String expression){
         cells[row][col] = new Cell(this,row,col,new ExperssionContent(expression));
-        cells[row][col].setFormula(expression);
+        cells[row][col].setExpression(expression);
     }
     public void addCell(int row, int col , String val,String formula){
         cells[row][col] = new Cell(this,row,col,new TextContent(val),formula);
@@ -63,7 +66,7 @@ public class Spreadsheet {
         for (int i = 0; i < rowsize; i++) {
             for (int j = 0; j < colsize; j++) {
                 if (getCell(i, j) != null) {
-                    if(getCell(i,j).getFormula()!=null){
+                    if(getCell(i,j).getExpression()!=null){
                         System.out.printf("%20s",getCell(i,j).calculateFormula());
                     }else {
                         System.out.printf("%20s", this.getCellValue(i, j));

@@ -1,6 +1,8 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
+import spreadsheet.operator.Addition;
+import spreadsheet.operator.Operator;
 import spreadsheet.service.NumericExpression;
 
 public class Cell {
@@ -8,11 +10,17 @@ public class Cell {
     private int col;
     private Spreadsheet spreadsheet;
 
-    private String formula;
+    private String expression;
     private Content content;
     private double calculation;
+
     public Cell(){
 
+    }
+    public Cell(Spreadsheet spreadsheet, int row, int col){
+        this.spreadsheet = spreadsheet;
+        this.row = row;
+        this.col = col;
     }
     public Cell(Spreadsheet spreadsheet,int row, int col, Content content) {
         this.row = row;
@@ -20,11 +28,11 @@ public class Cell {
         this.content = content;
         this.spreadsheet = spreadsheet;
     }
-    public Cell(Spreadsheet spreadsheet,int row, int col, Content content,String formula) {
+    public Cell(Spreadsheet spreadsheet,int row, int col, Content content,String expression) {
         this.row = row;
         this.col = col;
         this.content = content;
-        this.formula= formula;
+        this.expression = expression;
         this.spreadsheet = spreadsheet;
     }
     public int getRow() {
@@ -52,21 +60,14 @@ public class Cell {
 
 
     public boolean isFormulaContainsRef(){
-        return getFormula().contains("[");
+        return getExpression().contains("[");
     }
 
     public double calculateFormula(){
-        NumericExpression numericExpression = content.createExpression(this.formula);
-        String[] values = formula.split("\\+"); // TODO extra operator
-        for (int i = 0; i <values.length ; i++) {
-            if(values[i].contains("[")){
-                numericExpression.append(spreadsheet.getCellValueFromDouble(values[i]));
-            }else{
-                numericExpression.append(Double.valueOf(values[i]));
-            }
-
-        }
-        return content.calculateFormula();
+        NumericExpression numericExpression = new NumericExpression();
+        double result = numericExpression.evaluate(expression,spreadsheet);
+        content.setCalculation(result);
+        return content.getCalculation();
     }
 
     public void setContent(Content content) {
@@ -90,19 +91,26 @@ public class Cell {
     }
     @Override
     public String toString() {
-        if(getFormula()!=null){
-            return getCoordinates()+ " = " +getFormula();
+//        if(getContent()==null){
+//
+//        }
+        if(getExpression()!=null ){
+            return getCoordinates()+ " = []--> " + getExpression();
+        }
+        // TODO fix instanceOF
+        if(content instanceof Operator){
+            return getCoordinates()+ " = []--> " + getContentData();
         }
 
-        return  getCoordinates()+ " = " +getContentData();
+        return  getCoordinates()+ " = [" +getContentData() + "]" + "-->" + getContentValue();
     }
 
-    public String getFormula() {
-        return formula;
+    public String getExpression() {
+        return expression;
     }
 
-    public void setFormula(String formula) {
-        this.formula = formula;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
     public Spreadsheet getSpreadsheet() {
