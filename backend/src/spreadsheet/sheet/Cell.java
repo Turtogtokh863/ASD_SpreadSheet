@@ -1,6 +1,7 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
+import spreadsheet.operator.Addition;
 import spreadsheet.service.NumericExpression;
 
 public class Cell {
@@ -57,17 +58,10 @@ public class Cell {
     }
 
     public double calculateFormula(){
-        NumericExpression numericExpression = content.createExpression(this.expression);
-        String[] values = expression.split("\\+"); // TODO extra operator
-        for (int i = 0; i <values.length ; i++) {
-            if(values[i].contains("[")){
-                numericExpression.append(spreadsheet.getCellValueFromDouble(values[i]));
-            }else{
-                numericExpression.append(Double.valueOf(values[i]));
-            }
-
-        }
-        return content.calculateFormula();
+        NumericExpression numericExpression = new NumericExpression();
+        double result = numericExpression.evaluate(expression,spreadsheet);
+        content.setCalculation(result);
+        return content.getCalculation();
     }
 
     public void setContent(Content content) {

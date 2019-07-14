@@ -2,7 +2,6 @@ package spreadsheet.content;
 
 
 import spreadsheet.service.NumericExpression;
-import spreadsheet.operator.Addition;
 
 public abstract class Content {
     private String data;
@@ -17,19 +16,7 @@ public abstract class Content {
     public Content(String data) {
         this.data = data;
     }
-
-    public NumericExpression createExpression(String formula){
-        numericExpression = new NumericExpression(new Addition());
-        return numericExpression;
-    }
-
     public abstract String  getContentValue();
-
-    public double   calculateFormula(){
-        calculation = numericExpression.evaluate();
-        return this.calculation;
-    }
-
     public String getData() {
         return data;
     }
