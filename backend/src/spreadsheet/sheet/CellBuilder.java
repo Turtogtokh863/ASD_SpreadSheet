@@ -5,33 +5,45 @@ import spreadsheet.content.ExperssionContent;
 import spreadsheet.content.NumericContent;
 import spreadsheet.content.TextContent;
 
-import java.security.SecurityPermission;
-
 public class CellBuilder {
     private int row;
     private int col;
     private Spreadsheet spreadsheet;
-
     private String expression;
     private Content content;
     private double calculation;
 
-    public  CellBuilder(){
+    private   CellBuilder(){
     }
 
+    public static CellBuilder newInstance(){
+        return new CellBuilder();
+    }
+    public CellBuilder setContent(Content value){
+        this.content = value;
+        return this;
+    }
     public CellBuilder setContent(String value){
-        if(value.matches("\\d+")){
-            content = new NumericContent(Double.valueOf(value));
-
-        }else if(value.matches("^[a-zA-Z]*$")){
-            content = new TextContent(value);
-        } else if(value.matches("\\d+[\\-\\+\\*\\/]+\\d")){
-            content = new ExperssionContent(value);
+        if(value.matches("[0-9]+.[0-9]+") || value.matches("[0-9]+")){
+            Content con = new NumericContent(Double.valueOf(value));
+            this.content = con;
+        }else if(value.matches("[a-zA-Z:\\\"\\s-\\[+\\],0-9]*")){
+            Content con = new TextContent(value);
+            this.content = con;
         }
+//        else if(value.matches("[\\-\\+\\*\\/]")){
+//            Content con = new ExperssionContent(value);
+//            this.content = con;
+//        }
+//        if(value.matches("[A-Za-z ]*")){
+//            Content c = new TextContent(value);
+//            this.content = c;
+//        }
+//        System.out.println("val: " + value +" "+this.content.getCalculation());
         return this;
     }
 
-    public CellBuilder setCell(int row, int col){
+    public CellBuilder setCoordinate(int row, int col){
         this.row = row;
         this.col = col;
         return this;

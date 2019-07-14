@@ -2,6 +2,7 @@ package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
 import spreadsheet.operator.Addition;
+import spreadsheet.operator.Operator;
 import spreadsheet.service.NumericExpression;
 
 public class Cell {
@@ -90,11 +91,18 @@ public class Cell {
     }
     @Override
     public String toString() {
-        if(getExpression()!=null){
-            return getCoordinates()+ " = " + getExpression();
+//        if(getContent()==null){
+//
+//        }
+        if(getExpression()!=null ){
+            return getCoordinates()+ " = []--> " + getExpression();
+        }
+        // TODO fix instanceOF
+        if(content instanceof Operator){
+            return getCoordinates()+ " = []--> " + getContentData();
         }
 
-        return  getCoordinates()+ " = " +getContentData();
+        return  getCoordinates()+ " = [" +getContentData() + "]" + "-->" + getContentValue();
     }
 
     public String getExpression() {

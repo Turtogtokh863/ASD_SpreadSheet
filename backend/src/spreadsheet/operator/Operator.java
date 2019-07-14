@@ -1,9 +1,6 @@
 package spreadsheet.operator;
 
 import spreadsheet.content.Content;
-import spreadsheet.content.NumericContent;
-import spreadsheet.content.Reference;
-
 public abstract class Operator extends Content {
 
     private String operator;
