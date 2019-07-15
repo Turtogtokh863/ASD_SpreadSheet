@@ -86,7 +86,7 @@ public class NumericExpression {
     public double applyOperator(char c, double right, double left){
         switch (c){
             case '+' : return (new Addition()).apply(right,left);
-            case '-' : return (new Subtraction()).apply(right,left);
+            case '-' : return (new Subtraction()).apply(left,right);
             case '*' : return (new Multiplication()).apply(right,left);
             case '/' : return (new Division()).apply(right,left);
         }

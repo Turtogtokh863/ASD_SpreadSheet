@@ -31,6 +31,11 @@ public class CellBuilder {
             Content con = new TextContent(value);
             this.content = con;
         }
+//        else if(value.contains("[")){
+//            Content con = new TextContent(value);
+//            this.content = con;
+//            this.setExpression(value);
+//        }
 //        else if(value.matches("[\\-\\+\\*\\/]")){
 //            Content con = new ExperssionContent(value);
 //            this.content = con;

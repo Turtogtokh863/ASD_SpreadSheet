@@ -49,9 +49,11 @@ public class Director {
     public void buildSample(){
 
         setCell(1,1,"\"Airfare :\"");
-        setCell(1,2,"485.7");
-        setCell(1,3,"");
-        setCell(1,4,"\"What we pay to the airline\"");
+        setCell(1,2,"485.15");
+//        (200*4)/2+5*(18-1)+0.15
+        buildExperssionCell(1,3," ( 200 * 4 ) / 2 + ( 18 - 1 ) * 5 + 0.15 ");
+//        setCell(1,3,"");
+        setCell(1,4,"   \"What we pay to the airline\"");
         setCell(2,1,"\"Taxi :\"");
         setCell(2,2,"118");
 
@@ -73,8 +75,8 @@ public class Director {
             addition.append(new Reference(spreadsheet.getCell(i,2)));
         }
         setCell(7,2, addition);
-        setCell(7,3,"");
-        setCell(7,4,"\"This is just reference to [1,2]\"");
+        buildExperssionCell(7,3," [1,2] + [2,2] + [3,2] + [4,2] + [5,2] ");
+        setCell(7,4,"  \"This is just reference to [1,2]\"");
 
         setCell(8,1,"\"Tax :\"");
         setCell(8,2,"0.15");
@@ -89,7 +91,7 @@ public class Director {
 
         multiplication.append(onePlusTaxFactor);
         setCell(9,2,multiplication);
-
+        buildExperssionCell(9,3," [7,2] * ( 1.0 - [8,2] )");
         setCell(10,1,"\"Partners :\"");
         setCell(10,2,"4");
 
@@ -101,9 +103,9 @@ public class Director {
         division.append(new Reference(spreadsheet.getCell(10,2)));
         division.append(new Reference(spreadsheet.getCell(11,2)));
         setCell(12,2,division);
+        buildExperssionCell(12,3,"[9,2] / [10,2] / [11,2]");
         setCell(13,1,"\"Expression :\"");
-        setCell(13,2,"[1,2]+[2,2]+[3,2]+[4,2]+[5,2]+200");
-
+        buildExperssionCell(13,2,"[1,2] + ( [2,2]+[3,2] ) * 2 + [4,2] / 3 + [5,2] + 200");
 
     }
     public void describe(){
