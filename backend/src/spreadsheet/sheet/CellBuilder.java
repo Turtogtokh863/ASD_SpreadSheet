@@ -1,7 +1,7 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
-import spreadsheet.content.ExperssionContent;
+import spreadsheet.content.ExpressionContent;
 import spreadsheet.content.NumericContent;
 import spreadsheet.content.TextContent;
 
@@ -32,17 +32,11 @@ public class CellBuilder {
             this.content = con;
         }
         else if(value.matches("[0-9.\\s\\-\\+\\*\\/\\[\\](),]*")){
-            Content con = new ExperssionContent(value);
+            Content con = new ExpressionContent(value);
             this.content = con;
             this.setExpression(value);
 
         }
-//        System.out.println("val: " + value +"  asd "+value.matches("[0-9.\\s\\-\\+\\*\\/\\[\\](),]*"));
-//        if(value.matches("[A-Za-z ]*")){
-//            Content c = new TextContent(value);
-//            this.content = c;
-//        }
-
         return this;
     }
 

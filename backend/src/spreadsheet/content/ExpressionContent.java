@@ -1,9 +1,9 @@
 package spreadsheet.content;
 
-public class ExperssionContent extends Content{
+public class ExpressionContent extends Content{
     private String expression;
 
-    public ExperssionContent(String expression) {
+    public ExpressionContent(String expression) {
         super(expression);
         this.expression = expression;
     }

@@ -1,6 +1,6 @@
 package spreadsheet.sheet;
 
-import spreadsheet.content.ExperssionContent;
+import spreadsheet.content.ExpressionContent;
 import spreadsheet.content.NumericContent;
 import spreadsheet.content.Reference;
 import spreadsheet.content.TextContent;
@@ -35,7 +35,7 @@ public class Spreadsheet {
         cells[row][col] = new Cell(this,row,col,new Reference(val));
     }
     public void addCellExpression(int row, int col, String expression){
-        cells[row][col] = new Cell(this,row,col,new ExperssionContent(expression));
+        cells[row][col] = new Cell(this,row,col,new ExpressionContent(expression));
         cells[row][col].setExpression(expression);
     }
     public void addCell(int row, int col , String val,String formula){
@@ -67,8 +67,6 @@ public class Spreadsheet {
             for (int j = 0; j < colsize; j++) {
                 if (getCell(i, j) != null) {
                     if(getCell(i,j).getExpression()!=null){
-//                        System.out.println("i = "+i +" j="+j);
-//                        System.out.println(getCell(i,j).getExpression());
                         System.out.printf("%20s",getCell(i,j).calculateFormula());
                     }else {
                         System.out.printf("%20s", this.getCellValue(i, j));
