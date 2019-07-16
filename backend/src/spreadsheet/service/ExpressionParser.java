@@ -21,7 +21,7 @@ public class ExpressionParser {
     public void addOperator(char c){
         operators.push(c);
     }
-    public double evaluate(String expression, Spreadsheet spreadsheet){
+    public double parse(String expression, Spreadsheet spreadsheet){
 
         char[] tokens = expression.toCharArray();
         for (int i = 0; i < tokens.length; i++){

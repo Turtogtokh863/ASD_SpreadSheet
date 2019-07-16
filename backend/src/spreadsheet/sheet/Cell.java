@@ -58,13 +58,9 @@ public class Cell {
     }
 
 
-    public boolean isFormulaContainsRef(){
-        return getExpression().contains("[");
-    }
-
     public double calculateFormula(){
         ExpressionParser expressionParser = new ExpressionParser();
-        double result = expressionParser.evaluate(expression,spreadsheet);
+        double result = expressionParser.parse(expression,spreadsheet);
         content.setCalculation(result);
         return content.getCalculation();
     }
