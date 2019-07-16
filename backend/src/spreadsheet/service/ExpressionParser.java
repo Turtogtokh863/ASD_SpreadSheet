@@ -8,10 +8,10 @@ import spreadsheet.sheet.Spreadsheet;
 
 import java.util.Stack;
 
-public class NumericExpression {
+public class ExpressionParser {
     private Stack<Character> operators;
     private Stack<Double> values;
-    public NumericExpression(){
+    public ExpressionParser(){
         operators = new Stack<>();
         values = new Stack<>();
     }
