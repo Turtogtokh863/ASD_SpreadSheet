@@ -67,6 +67,8 @@ public class Spreadsheet {
             for (int j = 0; j < colsize; j++) {
                 if (getCell(i, j) != null) {
                     if(getCell(i,j).getExpression()!=null){
+//                        System.out.println("i = "+i +" j="+j);
+//                        System.out.println(getCell(i,j).getExpression());
                         System.out.printf("%20s",getCell(i,j).calculateFormula());
                     }else {
                         System.out.printf("%20s", this.getCellValue(i, j));

@@ -27,19 +27,22 @@ public class CellBuilder {
         if(value.matches("[0-9]+.[0-9]+") || value.matches("[0-9]+")){
             Content con = new NumericContent(Double.valueOf(value));
             this.content = con;
-        }else if(value.matches("[a-zA-Z:\\\"\\s-\\[+\\],0-9]*")){
+        }else if(value.matches("[a-zA-Z:\\\"\\s\\[\\],0-9]*")){
             Content con = new TextContent(value);
             this.content = con;
         }
-//        else if(value.matches("[\\-\\+\\*\\/]")){
-//            Content con = new ExperssionContent(value);
-//            this.content = con;
-//        }
+        else if(value.matches("[0-9.\\s\\-\\+\\*\\/\\[\\](),]*")){
+            Content con = new ExperssionContent(value);
+            this.content = con;
+            this.setExpression(value);
+
+        }
+//        System.out.println("val: " + value +"  asd "+value.matches("[0-9.\\s\\-\\+\\*\\/\\[\\](),]*"));
 //        if(value.matches("[A-Za-z ]*")){
 //            Content c = new TextContent(value);
 //            this.content = c;
 //        }
-//        System.out.println("val: " + value +" "+this.content.getCalculation());
+
         return this;
     }
 
