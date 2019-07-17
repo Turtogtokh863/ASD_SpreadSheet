@@ -106,7 +106,7 @@ public class Director {
         setCell(12,2,division);
         setCell(12,3,"[9,2] / [10,2] / [11,2]");
         setCell(13,1,"\"Expression :\"");
-        setCell(13,2,"[1,2] + ( [2,2]+[3,2] ) * 2 + [4,2] / 3 + [5,2] + 200");
+        setCell(13,2,"[1,2] + ( ( [2,2] +  [3,2] ) * 3  + 2 ) * 3 + [4,2] / 3 + [5,2] + 200");
 
     }
     public void describe(){

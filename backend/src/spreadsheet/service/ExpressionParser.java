@@ -11,9 +11,18 @@ import java.util.Stack;
 public class ExpressionParser {
     private Stack<Character> operators;
     private Stack<Double> values;
+    private Addition addition;
+    private Subtraction subtraction;
+    private Multiplication multiplication;
+    private Division division;
+
     public ExpressionParser(){
         operators = new Stack<>();
         values = new Stack<>();
+        addition = new Addition();
+        subtraction = new Subtraction();
+        multiplication = new Multiplication();
+        division = new Division();
     }
     public void addValue(double val){
         values.push(val);
@@ -85,10 +94,10 @@ public class ExpressionParser {
     }
     public double applyOperator(char c, double right, double left){
         switch (c){
-            case '+' : return (new Addition()).apply(right,left);
-            case '-' : return (new Subtraction()).apply(left,right);
-            case '*' : return (new Multiplication()).apply(right,left);
-            case '/' : return (new Division()).apply(right,left);
+            case '+' : return addition.apply(right,left);
+            case '-' : return subtraction.apply(left,right);
+            case '*' : return multiplication.apply(right,left);
+            case '/' : return division.apply(right,left);
         }
         return 0;
     }
