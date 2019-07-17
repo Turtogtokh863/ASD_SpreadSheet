@@ -1,9 +1,8 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
-import spreadsheet.operator.Addition;
 import spreadsheet.operator.Operator;
-import spreadsheet.service.NumericExpression;
+import spreadsheet.service.ExpressionParser;
 
 public class Cell {
     private int row;
@@ -59,13 +58,9 @@ public class Cell {
     }
 
 
-    public boolean isFormulaContainsRef(){
-        return getExpression().contains("[");
-    }
-
     public double calculateFormula(){
-        NumericExpression numericExpression = new NumericExpression();
-        double result = numericExpression.evaluate(expression,spreadsheet);
+        ExpressionParser expressionParser = new ExpressionParser();
+        double result = expressionParser.parse(expression,spreadsheet);
         content.setCalculation(result);
         return content.getCalculation();
     }

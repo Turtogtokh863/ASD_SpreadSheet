@@ -1,7 +1,7 @@
 package spreadsheet.sheet;
 
 import spreadsheet.content.Content;
-import spreadsheet.content.ExperssionContent;
+import spreadsheet.content.ExpressionContent;
 import spreadsheet.content.NumericContent;
 import spreadsheet.content.TextContent;
 
@@ -27,19 +27,16 @@ public class CellBuilder {
         if(value.matches("[0-9]+.[0-9]+") || value.matches("[0-9]+")){
             Content con = new NumericContent(Double.valueOf(value));
             this.content = con;
-        }else if(value.matches("[a-zA-Z:\\\"\\s-\\[+\\],0-9]*")){
+        }else if(value.matches("[a-zA-Z:\\\"\\s\\[\\],0-9]*")){
             Content con = new TextContent(value);
             this.content = con;
         }
-//        else if(value.matches("[\\-\\+\\*\\/]")){
-//            Content con = new ExperssionContent(value);
-//            this.content = con;
-//        }
-//        if(value.matches("[A-Za-z ]*")){
-//            Content c = new TextContent(value);
-//            this.content = c;
-//        }
-//        System.out.println("val: " + value +" "+this.content.getCalculation());
+        else if(value.matches("[0-9.\\s\\-\\+\\*\\/\\[\\](),]*")){
+            Content con = new ExpressionContent(value);
+            this.content = con;
+            this.setExpression(value);
+
+        }
         return this;
     }
 
